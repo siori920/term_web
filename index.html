@@ -7,59 +7,54 @@
     <style>
         /* ページ全体のサイズを指定 */
         body {
-            width: 1080px;
-            height: 500px;
             margin: 0;
+            height: 100vh; /* ウィンドウの高さ全体 */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* 水平方向の中央揃え */
+            align-items: center; /* 垂直方向の中央揃え */
         }
 
         /* 画像を横並びに表示するためのスタイル */
         .image-container {
             display: flex;
             gap: 20px; /* 画像の間の隙間 */
-            
+            width: 1080px; /* コンテナの幅を固定 */
+            max-height: 500px; /* コンテナの高さを最大500pxに */
         }
 
         img {
-            height: 100%;
-            max-height: 500px;
-            width: 500px;
+            max-height: 500px; /* 画像の高さを500pxに制限 */
+            width: auto; /* 幅は自動調整 */
+            cursor: pointer; /* クリック可能なカーソル */
         }
     </style>
 </head>
 <body>
     <div class="image-container">
         <!-- ランダムに選ばれた2枚の画像を表示するための要素 -->
-        <img id="image1" src="" alt="ランダム画像1">
-        <img id="image2" src="" alt="ランダム画像2">
+        <img id="image1" src="" alt="ランダム画像1" onclick="changeImage(1)">
+        <img id="image2" src="" alt="ランダム画像2" onclick="changeImage(2)">
     </div>
 
     <script>
         // 事前に保存した10枚の写真のパスを配列に格納
         const images = [
-            'images/term_photo1.jpg',
-            'images/term_photo2.jpg',
-            'images/term_photo3.jpg',
-            'images/term_photo4.jpg',
-            'images/term_photo5.jpg',
-            'images/term_photo6.jpg',
-            'images/term_photo7.jpg',
-            'images/term_photo8.jpg',
-            'images/term_photo9.jpg',
-            'images/term_photo10.jpg'
+            'images/photo1.jpg',
+            'images/photo2.jpg',
+            'images/photo3.jpg',
+            'images/photo4.jpg',
+            'images/photo5.jpg',
+            'images/photo6.jpg',
+            'images/photo7.jpg',
+            'images/photo8.jpg',
+            'images/photo9.jpg',
+            'images/photo10.jpg'
         ];
+
         // 新しい画像のパス（1つだけ）
         const newImage = 'images/new.jpg';
 
         let selectedImages = [];
-
-
-        // ランダムなインデックスを生成する関数
-        function getRandomIndex(max) {
-            return Math.floor(Math.random() * max);
-        }
 
         // ランダムで2枚の異なる画像を選ぶ
         function displayRandomImages() {
@@ -69,13 +64,22 @@
                 index2 = getRandomIndex(images.length);
             } while (index1 === index2); // 同じ画像が選ばれないようにする
 
+            selectedImages = [images[index1], images[index2]]; // 選択した画像を保存
+
             document.getElementById('image1').src = images[index1];
             document.getElementById('image2').src = images[index2];
         }
+
+        // ランダムなインデックスを生成する関数
+        function getRandomIndex(max) {
+            return Math.floor(Math.random() * max);
+        }
+
         // 画像がクリックされたときに新しい画像に変更する関数
         function changeImage(imageNumber) {
             const imgElement = document.getElementById(`image${imageNumber}`);
             imgElement.src = newImage; // クリックされた画像を新しい画像に変更
+            console.log(`Image ${imageNumber} clicked and changed to ${newImage}`); // デバッグ用
         }
 
         // ページ読み込み時にランダムな画像を表示
