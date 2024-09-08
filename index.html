@@ -50,6 +50,11 @@
             'images/term_photo9.jpg',
             'images/term_photo10.jpg'
         ];
+        // 新しい画像のパス（1つだけ）
+        const newImage = 'images/new.jpg';
+
+        let selectedImages = [];
+
 
         // ランダムなインデックスを生成する関数
         function getRandomIndex(max) {
@@ -66,6 +71,11 @@
 
             document.getElementById('image1').src = images[index1];
             document.getElementById('image2').src = images[index2];
+        }
+        // 画像がクリックされたときに新しい画像に変更する関数
+        function changeImage(imageNumber) {
+            const imgElement = document.getElementById(`image${imageNumber}`);
+            imgElement.src = newImage; // クリックされた画像を新しい画像に変更
         }
 
         // ページ読み込み時にランダムな画像を表示
