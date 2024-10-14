@@ -17,14 +17,14 @@
         /* 画像を横並びに表示するためのスタイル */
         .image-container {
             display: flex;
-            gap: 20px; /* 画像の間の隙間 */
-            width: 1080px; /* コンテナの幅を固定 */
+            justify-content: space-between; /* 画像を等間隔で配置 */
+            width: 1080px; /* コンテナの横幅を固定 */
             max-height: 500px; /* コンテナの高さを最大500pxに */
         }
 
         img {
-            max-height: 500px; /* 画像の高さを500pxに制限 */
-            max-width: 300px; /* 幅は自動調整 */
+            width: 300px; /* 画像の幅を300pxに固定 */
+            height: auto; /* 高さは自動調整 */
             cursor: pointer; /* クリック可能なカーソル */
         }
     </style>
@@ -87,23 +87,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
